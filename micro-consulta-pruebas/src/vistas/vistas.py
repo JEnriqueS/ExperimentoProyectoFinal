@@ -1,8 +1,8 @@
 from http.client import NOT_FOUND
 from flask import request
 from flask_restful import Resource
-from src.modelos import db, prueba_tecnica, candidato, candidatoSchema
-from src.services import SaveCandidate
+from modelos import db, prueba_tecnica, candidato, candidatoSchema
+from services import SaveCandidate
 
 prueba_tecnica_schema = prueba_tecnica()
 candidato_schema = candidatoSchema(many=True)

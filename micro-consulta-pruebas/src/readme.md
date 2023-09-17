@@ -24,3 +24,7 @@ python -m flask run
     "idiomas":"{{$randomLocale}}",
     "id_estado":1
 }
+
+<!-- Docker commands -->
+docker build -t consulta:v1 .
+docker run --env-file .env -d -p 5000:5000 consulta:v1

@@ -1,5 +1,5 @@
 
-from src.modelos import candidato, db
+from modelos import candidato, db
 
 
 def SaveCandidate(
