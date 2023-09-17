@@ -6,6 +6,7 @@ from src.services import SaveCandidate
 
 prueba_tecnica_schema = prueba_tecnica()
 candidato_schema = candidatoSchema(many=True)
+candidato_schema_single = candidatoSchema()
 
 class VistaConsultaPrueba(Resource):
 
@@ -31,4 +32,4 @@ class VistaCrearCandidato(Resource):
             data['idiomas'],
             data['id_estado'],
             )
-        return response
+        return candidato_schema_single.dump(response)

@@ -26,4 +26,4 @@ def SaveCandidate(
         )
     db.session.add(new_Candidate)
     db.session.commit()
-    return "agregado"
+    return new_Candidate
