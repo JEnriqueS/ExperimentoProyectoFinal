@@ -60,6 +60,7 @@ class prueba_tecnicaSchema(SQLAlchemyAutoSchema):
     class Meta:
         model = prueba_tecnica
         include_relationships = True
+        include_fk = True
         load_instance = True
     
     puntaje = fields.Float()
