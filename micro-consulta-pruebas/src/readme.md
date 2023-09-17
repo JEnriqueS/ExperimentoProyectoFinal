@@ -10,3 +10,17 @@ deactivate
 python -m pip install <package>
 <!-- run -->
 python -m flask run
+
+<!-- json body with random variables for postman test -->
+
+{
+    "numid_nacional":"{{$guid}}",
+    "nombres":"{{$randomFirstName}} {{$randomFirstName}}",
+    "apellidos":"{{$randomLastName}} {{$randomLastName}}",
+    "telefono":"{{$randomPhoneNumber}}",
+    "direccional":"{{$randomStreetAddress}}",
+    "edad":{{$randomInt}},
+    "ubicacion_geografica":"{{$randomCountry}}",
+    "idiomas":"{{$randomLocale}}",
+    "id_estado":1
+}
