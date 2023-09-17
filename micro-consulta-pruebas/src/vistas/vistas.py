@@ -14,9 +14,20 @@ class VistaConsultaCandidato(Resource):
 
     def get(self):
         return candidato_schema.dump(candidato.query.all())
+    
 class VistaCrearCandidato(Resource):
 
     def post(self):
         data = request.json
-        response = SaveCandidate(data['numid_nacional'])
+        response = SaveCandidate(
+            data['numid_nacional'],
+            data['nombres'],
+            data['apellidos'],
+            data['telefono'],
+            data['direccional'],
+            data['edad'],
+            data['ubicacion_geografica'],
+            data['idiomas'],
+            data['id_estado'],
+            )
         return response

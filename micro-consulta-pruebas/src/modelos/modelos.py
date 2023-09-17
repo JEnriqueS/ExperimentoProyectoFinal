@@ -65,17 +65,27 @@ class prueba_tecnicaSchema(SQLAlchemyAutoSchema):
     
     puntaje = fields.Float()
 
-def SaveCandidate(numid_nacional):
+def SaveCandidate(
+        numid_nacional,
+        nombres,
+        apellidos,
+        telefono,
+        direccional,
+        edad,
+        ubicacion_geografica,
+        idiomas,
+        id_estado,
+        ):
     new_Candidate = candidato(
         numid_nacional=numid_nacional,
-        nombres ='test cand',
-        apellidos = 'test ap',
-        telefono = 'test ap',
-        direccional = 'test ap',
-        edad = 12,
-        ubicacion_geografica = 'test ap',
-        idiomas = 'test ap',
-        id_estado = 1
+        nombres =nombres,
+        apellidos = apellidos,
+        telefono = telefono,
+        direccional = direccional,
+        edad = edad,
+        ubicacion_geografica = ubicacion_geografica,
+        idiomas = idiomas,
+        id_estado = id_estado
         )
     db.session.add(new_Candidate)
     db.session.commit()
