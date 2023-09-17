@@ -17,10 +17,6 @@ class VistaConsultaCandidato(Resource):
 class VistaCrearCandidato(Resource):
 
     def post(self):
-        print('request')
-        print(request)
         data = request.json
-        print('data')
-        print(data)
         response = SaveCandidate(data['numid_nacional'])
         return response

@@ -6,5 +6,7 @@ python -m venv venv
 venv\Scripts\Activate.ps1
 <!-- deactivate -->
 deactivate
+<!-- install package -->
+python -m pip install <package>
 <!-- run -->
 python -m flask run
