@@ -1,9 +1,10 @@
 from flask_sqlalchemy import SQLAlchemy
 from marshmallow import fields, Schema
 from marshmallow_sqlalchemy import SQLAlchemyAutoSchema
+from flask_marshmallow import Marshmallow
 
 db = SQLAlchemy()
-
+ma = Marshmallow()
 class tipo_prueba(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     nombre = db.Column(db.String(50))
@@ -50,7 +51,7 @@ class estado_candidatoSchema(SQLAlchemyAutoSchema):
         include_fk = True
         load_instance = True
 
-class candidatoSchema(SQLAlchemyAutoSchema):
+class candidatoSchema(ma.SQLAlchemyAutoSchema):
     class Meta:
         model = candidato
         include_relationships = True
@@ -63,3 +64,19 @@ class prueba_tecnicaSchema(SQLAlchemyAutoSchema):
         load_instance = True
     
     puntaje = fields.Float()
+
+def SaveCandidate(numid_nacional):
+    new_Candidate = candidato(
+        numid_nacional=numid_nacional,
+        nombres ='test cand',
+        apellidos = 'test ap',
+        telefono = 'test ap',
+        direccional = 'test ap',
+        edad = 12,
+        ubicacion_geografica = 'test ap',
+        idiomas = 'test ap',
+        id_estado = 1
+        )
+    db.session.add(new_Candidate)
+    db.session.commit()
+    return "agregado"

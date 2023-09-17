@@ -1,10 +1,10 @@
 from flask import Flask
-from flask_cors import CORS
+# from flask_cors import CORS
 from flask_restful import Api
 from src.modelos import db
-from src.vistas import (VistaConsultaPrueba)
+from src.vistas import (VistaConsultaPrueba, VistaConsultaCandidato, VistaCrearCandidato)
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///eporra.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:Uniandes2023*@34.71.192.222:3306/candidatos'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['PROPAGATE_EXCEPTIONS'] = True
 
@@ -14,7 +14,9 @@ app_context.push()
 db.init_app(app)
 db.create_all()
 
-cors = CORS(app)
+# cors = CORS(app)
 
 api = Api(app)
-api.add_resource(VistaConsultaPrueba, '/prueba_tecnica/<int:id_prueba>')
+# api.add_resource(VistaConsultaPrueba, '/prueba_tecnica/<int:id_prueba>')
+api.add_resource(VistaConsultaCandidato, '/candidato/all')
+api.add_resource(VistaCrearCandidato, '/candidato/insert')
