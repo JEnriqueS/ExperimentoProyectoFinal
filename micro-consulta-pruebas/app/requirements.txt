@@ -6,3 +6,6 @@ marshmallow-sqlalchemy==0.25.0
 SQLAlchemy==1.4.15
 pymysql==1.1.0
 Werkzeug==2.0.1
+Jinja2==3.0.3
+gunicorn==20.1.0
+itsdangerous==2.0.1

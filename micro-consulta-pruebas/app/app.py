@@ -1,13 +1,13 @@
 from flask import Flask
 from flask_restful import Api
-from src.modelos import db
-from src.vistas import (VistaConsultaPrueba, VistaConsultaTodasPruebas)
+from modelos import db
+from vistas import (VistaConsultaPrueba, VistaConsultaTodasPruebas)
 import os
 
 sqlpass = os.getenv("SQL_PASSWORD")
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:'+str(sqlpass)+'@34.71.192.222:3306/candidatos'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:'+str(sqlpass)+'@10.113.176.3:3306/candidatos'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['PROPAGATE_EXCEPTIONS'] = True
 
