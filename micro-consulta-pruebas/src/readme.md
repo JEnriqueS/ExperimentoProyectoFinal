@@ -27,11 +27,11 @@ python -m flask run
 
 <!-- Docker commands -->
 docker build -t consulta:v1 .
-docker run --env-file .env -d -p 5000:5000 consulta:v1
+docker run --env-file .env -d -p 8080:8080 us-central1-docker.pkg.dev/proyecto-final-01-399101/experimento/test-image:v5
 
 <!-- to publish a container to gcp container rigistry and assuming it was crated on us-central1-->
 gcloud auth configure-docker us-central1-docker.pkg.dev
 
-docker build -t us-central1-docker.pkg.dev/proyecto-final-01-399101/experimento/test-image:v1 .
+docker build -t us-central1-docker.pkg.dev/proyecto-final-01-399101/experimento/test-image:v5 .
 
-docker push us-central1-docker.pkg.dev/proyecto-final-01-399101/experimento/test-image:v1
+docker push us-central1-docker.pkg.dev/proyecto-final-01-399101/experimento/test-image:v5
