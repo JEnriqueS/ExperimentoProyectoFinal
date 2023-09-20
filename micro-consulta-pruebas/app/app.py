@@ -7,7 +7,13 @@ import os
 sqlpass = os.getenv("SQL_PASSWORD")
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:'+str(sqlpass)+'@10.113.176.3:3306/candidatos'
+SQLALCHEMY_DATABASE_URI=''
+if(os.path.isdir('/cloudsql/')):
+    SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://root:'+sqlpass+'@/candidatos?unix_socket=/cloudsql/proyecto-final-01-399101:us-central1:candidatos'
+else:
+    SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://root:'+sqlpass+'@34.71.192.222:3306/candidatos'
+
+app.config['SQLALCHEMY_DATABASE_URI'] = SQLALCHEMY_DATABASE_URI
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['PROPAGATE_EXCEPTIONS'] = True
 
