@@ -27,13 +27,13 @@ class candidato(db.Model):
 
 class prueba_tecnica(db.Model):
     id = db.Column(db.Integer, primary_key=True)
+    id_candidato = db.Column(db.Integer, db.ForeignKey('candidato.id'))
     lenguaje = db.Column(db.String(50))
+    id_tipo_prueba = db.Column(db.Integer, db.ForeignKey('tipo_prueba.id'))
     puntaje = db.Column(db.Numeric, default=0)
     fecha = db.Column(db.DateTime)
     idioma = db.Column(db.String(20))
     notas_evaluador = db.Column(db.String(2000))
-    id_candidato = db.Column(db.Integer, db.ForeignKey('candidato.id'))
-    id_tipo_prueba = db.Column(db.Integer, db.ForeignKey('tipo_prueba.id'))
 
 
 
@@ -57,7 +57,7 @@ class candidatoSchema(ma.SQLAlchemyAutoSchema):
         include_relationships = True
         load_instance = True
 
-class prueba_tecnicaSchema(SQLAlchemyAutoSchema):
+class prueba_tecnicaSchema(ma.SQLAlchemyAutoSchema):
     class Meta:
         model = prueba_tecnica
         include_relationships = True

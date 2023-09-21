@@ -33,6 +33,7 @@ class VistaCrearCandidato(Resource):
             data['id_estado'],
             )
         return candidato_schema_single.dump(response)
+
 class VistaCrearPrueba(Resource):
 
     def post(self):

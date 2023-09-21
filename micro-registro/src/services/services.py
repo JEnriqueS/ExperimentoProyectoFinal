@@ -1,4 +1,5 @@
 
+from datetime import datetime
 from modelos import candidato, prueba_tecnica, db
 
 
@@ -37,12 +38,14 @@ def SavePruebaTecnica(
         idioma,
         notas_evaluador
         ):
+    date_format = '%Y-%m-%d %H:%M:%S'
+    dateObject = datetime.strptime(fecha, date_format)
     new_test = prueba_tecnica(
         id_candidato=id_candidato,
         lenguaje =lenguaje,
         id_tipo_prueba = id_tipo_prueba,
         puntaje = puntaje,
-        fecha = fecha,
+        fecha = dateObject,
         idioma = idioma,
         notas_evaluador = notas_evaluador
         )
