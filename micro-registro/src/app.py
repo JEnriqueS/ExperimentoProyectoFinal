@@ -2,7 +2,7 @@ from flask import Flask
 # from flask_cors import CORS
 from flask_restful import Api
 from modelos import db
-from vistas import (VistaConsultaPrueba, VistaConsultaCandidato, VistaCrearCandidato)
+from vistas import (VistaConsultaPrueba, VistaConsultaCandidato,VistaCrearPrueba, VistaCrearCandidato)
 from dotenv import load_dotenv
 import os
 sqlpass = os.getenv("SQL_PASSWORD")
@@ -32,6 +32,7 @@ api = Api(app)
 # api.add_resource(VistaConsultaPrueba, '/prueba_tecnica/<int:id_prueba>')
 api.add_resource(VistaConsultaCandidato, '/candidato/all')
 api.add_resource(VistaCrearCandidato, '/candidato/insert')
+api.add_resource(VistaCrearPrueba, '/prueba/insert')
 
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 8080))
