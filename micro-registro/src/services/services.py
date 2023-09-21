@@ -1,5 +1,6 @@
 
-from modelos import candidato, db
+from datetime import datetime
+from modelos import candidato, prueba_tecnica, db
 
 
 def SaveCandidate(
@@ -27,3 +28,27 @@ def SaveCandidate(
     db.session.add(new_Candidate)
     db.session.commit()
     return new_Candidate
+
+def SavePruebaTecnica(
+        id_candidato,
+        lenguaje,
+        id_tipo_prueba,
+        puntaje,
+        fecha,
+        idioma,
+        notas_evaluador
+        ):
+    date_format = '%Y-%m-%d %H:%M:%S'
+    dateObject = datetime.strptime(fecha, date_format)
+    new_test = prueba_tecnica(
+        id_candidato=id_candidato,
+        lenguaje =lenguaje,
+        id_tipo_prueba = id_tipo_prueba,
+        puntaje = puntaje,
+        fecha = dateObject,
+        idioma = idioma,
+        notas_evaluador = notas_evaluador
+        )
+    db.session.add(new_test)
+    db.session.commit()
+    return new_test
