@@ -2,7 +2,7 @@ from http.client import NOT_FOUND
 from flask import request
 from flask_restful import Resource
 from modelos import db, prueba_tecnica, candidato, candidatoSchema
-from services import SaveCandidate, SavePruebaTecnica
+from services import SaveCandidate, SavePruebaTecnica, GenerarPruebasTecnicas
 
 prueba_tecnica_schema = prueba_tecnica()
 candidato_schema = candidatoSchema(many=True)
@@ -15,7 +15,7 @@ class VistaConsultaPrueba(Resource):
 class VistaConsultaCandidato(Resource):
 
     def get(self):
-        return candidato_schema.dump(candidato.query.all())
+        return candidato_schema.dump(candidato.id.query.all())
     
 class VistaCrearCandidato(Resource):
 
@@ -48,3 +48,16 @@ class VistaCrearPrueba(Resource):
             data['notas_evaluador']
             )
         return candidato_schema_single.dump(response)
+class VistaGenerarPruebas(Resource):
+
+    def post(self):
+        data = request.json
+        candidatedIds =[]
+        candidates = candidato.query.all()
+        for candidate in candidates:
+            candidatedIds.append(candidate.id)
+        response = GenerarPruebasTecnicas(
+            data['cantidadPruebas'],
+            candidatedIds
+            )
+        return response
