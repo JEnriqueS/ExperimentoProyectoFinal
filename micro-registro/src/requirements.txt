@@ -1,0 +1,9 @@
+flask
+flask_sqlalchemy
+flask_restful
+marshmallow
+marshmallow_sqlalchemy
+flask_marshmallow
+pymysql
+python-dotenv
+essential_generators
