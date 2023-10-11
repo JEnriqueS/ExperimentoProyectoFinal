@@ -7,3 +7,4 @@ flask_marshmallow
 pymysql
 python-dotenv
 essential_generators
+pytest

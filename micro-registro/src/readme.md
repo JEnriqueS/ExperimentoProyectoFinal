@@ -11,6 +11,9 @@ python -m pip install <package>
 <!-- run -->
 python -m flask run
 
+<!-- inside src folder -->
+python -m pytest tests/tests.py
+
 <!-- json body with random variables for postman test -->
 
 {
